@@ -1,0 +1,165 @@
+/* --- ZÁKLADNÍ RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #121212; /* Hluboká tmavá pro moderní look */
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- HEADER & NAVBAR (Konzistentní s indexem) --- */
+.header {
+    background-color: #ff0000;
+    padding: 15px 0;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.youtube-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px; /* Round corners u loga */
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #00c3ff;
+}
+
+/* --- KONTAKTNÍ STRÁNKA (Zarovnání na střed) --- */
+.contact-page {
+    flex: 1; /* Vyplní zbytek obrazovky */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.contact-card {
+    background: #1e1e1e;
+    width: 100%;
+    max-width: 450px;
+    padding: 50px 35px;
+    border-radius: 30px;
+    text-align: center;
+    border: 1px solid #333;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.big-discord-icon {
+    width: 70px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(88, 101, 242, 0.4));
+}
+
+.contact-card h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.contact-card p {
+    color: #aaa;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* --- INFO BOX --- */
+.contact-info {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 35px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.info-item span { color: #777; }
+
+.status-online {
+    color: #43b581; /* Discord zelená */
+}
+
+/* --- VYLEPŠENÉ DISCORD TLAČÍTKO --- */
+.discord-big-btn {
+    display: block;
+    background-color: #5865F2;
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 0px #3e49cc; /* 3D efekt */
+}
+
+.discord-big-btn:hover {
+    transform: translateY(-4px);
+    background-color: #6370f4;
+    box-shadow: 0 12px 20px rgba(88, 101, 242, 0.3), 
+                0 8px 0px #3e49cc;
+}
+
+.discord-big-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0px #3e49cc;
+}
+
+/* --- ANIMACE --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

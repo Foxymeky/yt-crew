@@ -1,0 +1,256 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background-color: rgb(36, 36, 36);
+    color: white;
+    overflow-x: hidden;
+}
+
+.header {
+    background-color: #ff0000;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header {
+    /* Použijeme rgba pro průhlednost (poslední číslo 0.85 je intenzita) */
+    background-color: rgba(255, 0, 0, 0.85); 
+    
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    /* Klíčové vlastnosti pro prolnutí/rozostření */
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px); /* Podpora pro Safari */
+    
+    /* Jemný stín pro oddělení od obsahu */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+
+/* Obal, který drží text a fotku u sebe */
+.logo-wrapper {
+    display: flex;
+    align-items: center; /* Vycentruje je vertikálně na střed */
+    gap: 15px; /* Mezera mezi textem a ikonou */
+}
+
+/* Styl pro samotnou ikonu */
+.youtube-icon {
+    width: 50px; /* Nastav si velikost podle potřeby */
+    height: 50px;
+    border-radius: 12px; /* Tohle udělá ty round corners */
+    object-fit: cover; /* Aby se obrázek nedeformoval */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Volitelný jemný rámeček */
+}
+
+/* Jen pro jistotu - upravený navbar, aby zbytek fungoval */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00c3ff;
+}
+
+
+.nav-links a {
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #00c3ff;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+.hero {
+    background: linear-gradient(135deg, #ff0000, #ffffff);
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero-content {
+    animation: fadeInUp 1s ease-out; /* Tady se spustí animace textu */
+}
+
+.hero h1 {
+    font-size: 55px;
+    margin-bottom: 20px;
+    color: #f3f3f3;
+}
+
+.hero p {
+    font-size: 22px;
+    color: #ffffff;
+    margin-bottom: 35px;
+}
+
+
+.Buttonsr {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 15px 50px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border: 1px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    /* Přidal jsem box-shadow s nulovou hodnotou, aby byl přechod plynulý */
+    box-shadow: 0 0 0px rgba(255, 71, 87, 0);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.Buttonsr:hover {
+    background-color: #ff4757;
+    border-color: #ff4757;
+    transform: scale(1.1);
+    /* Glow efekt: 
+       První stín je jemný u okraje, druhý vytváří tu velkou záři okolo */
+    box-shadow: 0 0 20px rgba(255, 71, 87, 0.6), 
+                0 0 40px rgba(255, 71, 87, 0.4);
+}
+
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #2a2a2a;
+    padding: 30px;
+    border-radius: 15px;
+    width: 300px;
+    transition: transform 0.3s ease;
+    border: 1px solid #333;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: #ff4757;
+}
+
+
+.discord-footer {
+    background-color: #1a1a1a; /* Trochu tmavší než zbytek webu */
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 2px solid #5865F2; /* Discord barva jako linka nahoře */
+    margin-top: 50px;
+}
+
+.discord-container p {
+    font-size: 20px;
+    margin-bottom: 25px;
+    color: #cccccc;
+}
+
+.discord-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #5865F2; /* Originální Discord modrá */
+    color: white;
+    text-decoration: none;
+    padding: 15px 35px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
+}
+
+.discord-button:hover {
+    background-color: #4752c4;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(88, 101, 242, 0.5);
+}
+
+.discord-icon {
+    width: 24px;
+    height: 24px;
+    /* Filtr udělá ikonku bílou, pokud by byla černá */
+    filter: brightness(0) invert(1);
+}
+
+
+
+.future_text {
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    
+    /* Animovaný gradient */
+    background: linear-gradient(90deg, #ffffff, #030303, #ffffff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 8s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
