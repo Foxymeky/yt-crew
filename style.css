@@ -254,3 +254,79 @@ body {
         background-position: 200% center;
     }
 }
+
+
+/* --- OPTIMALIZACE PRO MOBILY (Responsivita) --- */
+
+@media (max-width: 768px) {
+    /* 1. Header a Navigace */
+    .navbar {
+        flex-direction: column; /* Logo a menu pod sebou */
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .logo {
+        font-size: 22px; /* Trochu menší logo */
+    }
+
+    .youtube-icon {
+        width: 40px; /* Menší ikonka u loga */
+        height: 40px;
+    }
+
+    .nav-links {
+        gap: 15px; /* Menší mezery mezi odkazy v menu */
+        font-size: 14px;
+    }
+
+    /* 2. Hero sekce (hlavní text) */
+    .hero {
+        padding: 60px 20px; /* Menší vnitřní okraje */
+    }
+
+    .hero h1 {
+        font-size: 32px; /* Zmenšení obřího nadpisu */
+    }
+
+    .future_text {
+        font-size: 16px; /* Zmenšení svítícího textu */
+        letter-spacing: 1px;
+    }
+
+    .hero p {
+        font-size: 18px; /* Čitelnější text na mobilu */
+    }
+
+    /* 3. Karty (Features) */
+    .features {
+        padding: 30px 10px;
+    }
+
+    .card {
+        width: 100%; /* Karta se roztáhne na celou šířku mobilu */
+        max-width: 350px; /* Ale nebude úplně obří */
+    }
+
+    /* 4. Discord a Footer */
+    .discord-button {
+        width: 100%; /* Tlačítko na celou šířku pro snadnější klikání prstem */
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    .discord-container p {
+        font-size: 16px;
+    }
+}
+
+/* Oprava pro velmi malé telefony */
+@media (max-width: 400px) {
+    .nav-links {
+        gap: 10px;
+    }
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+}
