@@ -6,6 +6,17 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Youtube crew</title>
 </head>
+    <script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 <body>
 <header class="header">
     <nav class="navbar">
@@ -60,6 +71,7 @@
 <footer class="footer">
     <p>&copy; 2026 Youtube Crew. Všechna práva vyhrazena.</p>
 </footer>
+
 
 
 </body>
