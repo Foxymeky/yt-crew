@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Článek | Youtube crew</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <main style="max-width: 800px; margin: 100px auto; padding: 40px; background: #1a1a1a; border-radius: 20px; color: white; line-height: 1.6;">
+        <div id="content">Načítám obsah...</div>
+        <hr style="margin: 30px 0; border: 0; border-top: 1px solid #333;">
+        <a href="novinky.html" style="color: #ff4757; text-decoration: none; font-weight: bold;">← Zpět na všechny novinky</a>
+    </main>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const postUrl = urlParams.get('post');
+
+        async function loadPost() {
+            if (!postUrl) return;
+            try {
+                const response = await fetch(postUrl);
+                const text = await response.text();
+                
+                // Odstraní tu technickou hlavičku z adminu
+                const cleanText = text.replace(/^---[\s\S]*?---/, '');
+                
+                // Převede Markdown na HTML a vloží do stránky
+                document.getElementById('content').innerHTML = marked.parse(cleanText);
+            } catch (e) {
+                document.getElementById('content').innerHTML = "Chyba při načítání.";
+            }
+        }
+        loadPost();
+    </script>
+</body>
+</html>
