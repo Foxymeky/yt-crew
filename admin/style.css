@@ -1,0 +1,17 @@
+/* Styl pro kontejner s novinkami (v novinky.html) */
+#posts-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px 20px;
+    flex-wrap: wrap;
+    min-height: 200px;
+}
+
+/* Pokud skript ještě nic nenačetl */
+#loading {
+    color: #ff4757;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
