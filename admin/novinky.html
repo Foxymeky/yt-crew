@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Novinky | Youtube crew</title>
+</head>
+<body>
+<header class="header">
+    <nav class="navbar">
+        <div class="logo-wrapper">
+            <div class="logo">Youtube crew</div>
+            <img src="https://cdn.discordapp.com/icons/1359920482975092937/81b95047eb32eddfb9831fc39bcd3fe1.jpg" alt="Logo" class="youtube-icon">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Domů</a></li>
+            <li><a href="novinky.html">Novinky</a></li>
+            <li><a href="abt.html">O nás</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero" style="background: linear-gradient(135deg, #ff0000, #1a1a1a); padding: 60px 20px; text-align: center;">
+        <h1 class="future_text">Novinky z naší tvorby 🚀</h1>
+        <p>Všechno, co se u nás děje, na jednom místě.</p>
+    </section>
+
+    <section class="features" id="posts-container">
+        <p id="loading">Načítám novinky...</p>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2026 Youtube Crew. Všechna práva vyhrazena.</p>
+</footer>
+
+<script>
+    // Nastavení - TADY DOPLŇ SVOJE ÚDAJE
+    const GITHUB_USERNAME = 'Foxymeky'; 
+    const REPO_NAME = 'yt-crew';
+    const FOLDER_PATH = 'content/posts';
+
+    async function fetchPosts() {
+        const container = document.getElementById('posts-container');
+        try {
+            // 1. Získáme seznam souborů ze složky na GitHubu
+            const response = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${FOLDER_PATH}`);
+            const files = await response.json();
+
+            if (!Array.isArray(files)) throw new Error("Složka neexistuje nebo je prázdná");
+
+            container.innerHTML = ''; // Vymažeme nápis "Načítám..."
+
+            // 2. Projdeme každý soubor a vytvoříme kartu
+            for (const file of files) {
+                if (file.name.endsWith('.md')) {
+                    // Získáme obsah souboru
+                    const contentRes = await fetch(file.download_url);
+                    const contentText = await contentRes.text();
+
+                    // Velmi jednoduché "vytažení" titulku z Markdownu (hledá první řádek s # nebo title:)
+                    const title = contentText.match(/title:\s*(.*)/)?.[1] || file.name.replace('.md', '');
+                    const cleanTitle = title.replace(/['"]/g, '');
+
+                    // Vytvoření HTML karty
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <h3>${cleanTitle} 🎬</h3>
+                        <p>Kliknutím na GitHub si můžeš přečíst celý příspěvek.</p>
+                        <a href="${file.html_url}" target="_blank" style="color: #ff4757; text-decoration: none; font-size: 14px;">Číst více →</a>
+                    `;
+                    container.appendChild(card);
+                }
+            }
+        } catch (error) {
+            console.error(error);
+            container.innerHTML = '<p>Zatím tu nejsou žádné novinky. Přidej je v admin panelu!</p>';
+        }
+    }
+
+    fetchPosts();
+</script>
+</body>
+</html>
